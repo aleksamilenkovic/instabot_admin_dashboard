@@ -13,7 +13,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                <span class="instagram">
-                  <span class="fa fa-instagram" style="font-size: 2em;"></span>
+                  <span class="fa fa-instagram" id="id_icon" style="font-size: 2em;"></span>
                </span>
             </form>
         </div>
@@ -38,8 +38,13 @@
 
 <style scoped>
     #menu{
-        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+        /*background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);*/
+
         color: white;
     }
-
+    .instagram{
+        border-radius: 50%;
+        height: 31px;
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    }
 </style>
