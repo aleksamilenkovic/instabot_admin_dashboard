@@ -1,6 +1,10 @@
 <template>
     <div id="home">
-        <profile :profile="this.profile"/>
+        <div class="profiles" >
+            <profile :profile="this.profile" />
+            <profile :profile="this.profile" />
+            <profile :profile="this.profile" />
+        </div>
     </div>
 </template>
 
@@ -24,5 +28,10 @@
 </script>
 
 <style scoped>
-
+    .profiles{
+        margin:2%;
+        margin-left:18%;
+        margin-right: 18%;
+        text-align: center;
+    }
 </style>
