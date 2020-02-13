@@ -2,6 +2,11 @@
   <div id="app">
     <navbar/>
     <Home/>
+    <footer class="footer" >
+      <div class="container text-center" style="margin-top:1%">
+        <small >Copyright &copy; lezalekss instabot d.o.o.</small>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -24,6 +29,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
+.footer {
+   padding: 1%;
+   margin-top: 2%;
+   width: 100%;
+   color: white;
+   background-color: #2a2a2e;
+ }
 </style>
