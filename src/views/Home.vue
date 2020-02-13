@@ -29,9 +29,7 @@
 
 <style scoped>
     .profiles{
-        margin:2%;
-        margin-left:18%;
-        margin-right: 18%;
+        margin: 2% 30%;
         text-align: center;
     }
 </style>
