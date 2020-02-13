@@ -2,7 +2,7 @@
     <div id="home">
         <div class="background">
             <div class="element">
-                <img src="../assets/logo.png" style="margin: auto; ">
+                <img src="../assets/logo.png" style="margin-top:10%; ">
             </div>
 
         </div>
