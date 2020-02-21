@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <navbar/>
-    <Home/>
+    <div id="main">
+      <router-view></router-view>
+    </div>
     <footer class="footer" >
       <div class="container text-center" style="margin-top:1%">
         <small >Copyright &copy; lezalekss instabot d.o.o.</small>
@@ -12,12 +14,10 @@
 
 <script>
 import Navbar from "@/components/Navbar";
-import Home from "./views/Home";
 
 export default {
   name: 'app',
   components: {
-    Home,
     Navbar,
   }
 }
