@@ -2,7 +2,7 @@
     <div id="home">
         <div class="background">
             <div class="element">
-                <img src="../assets/logo.png" style="margin-top:10%; ">
+                <img src="../assets/logo.png" style="margin-top:10%; " alt="logo" />
             </div>
 
         </div>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+    const axios = require('axios');
     import Profile from "../components/Profile";
     export default {
         name: "Home",
@@ -43,6 +44,14 @@
                          }
                 ]
             }
+        },
+        mounted(){
+            axios.get("localhost").then((r)=>{
+                console.log(r);
+            })
+        },
+        methods:{
+
         }
     }
 </script>
@@ -69,7 +78,7 @@
         animation-name: stretch;
         animation-duration: 1.5s;
         animation-timing-function: ease-out;
-        animation-delay: 0;
+        /*animation-delay: 0;*/
         animation-direction: alternate;
         animation-iteration-count: 3;
         animation-fill-mode: none;
@@ -86,7 +95,7 @@
             background-color: lightgray;
         }
         100% {
-            transform: scale(1.5);
+            transform: scale(1.1);
             background-color: #2a2a2e;
         }
     }

@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.4.0",
     "core-js": "^3.4.4",
@@ -32,7 +33,13 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "comma-dangle": 0,
+      "no-unused-vars": "warn",
+      "no-console": 1,
+      "no-unexpected-multiline": "warn"
+    },
+    "parser": "babel-eslint",
     "parserOptions": {
       "parser": "babel-eslint"
     }
