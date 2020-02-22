@@ -1,0 +1,72 @@
+<template>
+    <div>
+        <div class="profiles" v-for="profile in profiles" :key="profile.username" >
+            <profile :profile="profile" />
+        </div>
+    </div>
+</template>
+
+<script>
+    import Profile from "@/components/Profile";
+    export default {
+        name: "BotScrapper",
+        components: {Profile},
+        data(){
+            return{
+                profiles: [
+                    {
+                        username: 'lezalekss',
+                        followers: 221,
+                        following: 25,
+                        posts: 45,
+                        image: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/43913073_2056866304644254_4326191411889176576_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=Pzm4zv2bDhsAX8tdn2f&oh=3424359fbafb4abf4cfa54d5be47e71e&oe=5EC55965'
+                    },
+                    {
+                        username: 'ognjanovicni',
+                        followers: 215,
+                        following: 45,
+                        posts: 20,
+                        image: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/72274938_1002072803485828_2940947451135131648_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=zAr1tlWhujIAX_UrvFh&oh=9cea15cd27c462c0d90f532a58cfbb53&oe=5ED0CD54'
+                    },
+                    {
+                        username: 'kostasavic',
+                        followers: 322,
+                        following: 121,
+                        posts: 70,
+                        image: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA'
+                    }
+                ],
+                profileStats: [
+                    {
+                        followers: 221,
+                        following: 25,
+                        posts: 45,
+                        averageLikes: 89.2,
+                        time: '2020-01-05',
+                        postsStats: [
+                            {
+                                time: '2020-01-05',
+                                likes: 50,
+                                url: 'instagram.com/lezalekss',
+                                imgUrl: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA',
+                            },
+                            {
+                                time: '2020-01-05',
+                                likes: 32,
+                                url: 'instagram.com/kostasavic',
+                                imgUrl: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA'
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    .profiles{
+        width: 50%;
+        margin: 5% auto auto;
+    }
+</style>
