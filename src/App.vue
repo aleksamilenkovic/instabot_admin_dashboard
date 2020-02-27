@@ -24,17 +24,26 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  html, body {
+    height: 100%!important;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%!important;
 }
+  #main{
+    flex: 1;
+  }
 .footer {
    padding: 1%;
-   margin-top: 2%;
-   width: 100%;
    color: white;
    background-color: #2a2a2e;
- }
+   flex-shrink: 0;
+}
 </style>

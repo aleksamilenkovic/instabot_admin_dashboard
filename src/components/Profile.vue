@@ -1,34 +1,40 @@
 <template>
-    <div class="profile">
-        <b-card no-body class="overflow-hidden" >
-            <b-row no-gutters>
-                <b-col md="3">
-                    <b-card-img :src=profile.image style="border-radius:50%; " left></b-card-img>
-                </b-col>
-                <b-col md="6">
+    <div class="profile" >
+        <b-card  class="overflow-hidden " >
+            <b-row no-gutters class="card-body align-items-center d-flex justify-content-center">
+
+                    <b-col >
+                        <b-card-img :src=profile.imgUrl style="border-radius:50%; " left></b-card-img>
+                    </b-col>
                     <b-card-body >
-                        <b-card-text><b-row >
+
+                        <b-row >
                             <b-col >
-                                <a :href="`https://www.instagram.com/`+profile.username">
-                                    <b-button  pill size="lg" id="username">{{profile.username}}</b-button>
-                                </a>
+                                <b-row>
+                                    <a :href="`https://www.instagram.com/`+profile.username">
+                                        <b-button  pill size="lg" id="username">{{profile.username}}</b-button>
+                                    </a>
+                                </b-row>
+                                <b-row>
+                                    <span >Followers: {{profile.followers}}</span>
+                                    <span>Following: {{profile.following}}</span>
+                                </b-row>
+
+                                <b-row>
+                                    <span>Posts: {{profile.posts}}</span>
+                                </b-row>
+                            </b-col>
+                            <b-col >
+                                <b-row>
+                                    <b-button  pill size="md" id="analyze" >analyze</b-button>
+                                </b-row>
+                                <b-row>
+                                <b-button  pill size="md" id="follow">following</b-button>
+                            </b-row>
                             </b-col>
                         </b-row>
-                            <b-row>
-                                <b-col >
-                                    <span>Followers: {{profile.followers}}</span>
-                                </b-col>
-                                <b-col >
-                                    <span>Following: {{profile.following}}</span>
-                                </b-col>
-                            </b-row>
 
-                            <b-col>
-                                <span>Posts: {{profile.posts}}</span>
-                            </b-col>
-                        </b-card-text>
                     </b-card-body>
-                </b-col>
             </b-row>
         </b-card>
     </div>
@@ -48,7 +54,7 @@
                 followers: Number,
                 following: Number,
                 posts: Number,
-                image: String
+                imgUrl: String
             }
 
         }

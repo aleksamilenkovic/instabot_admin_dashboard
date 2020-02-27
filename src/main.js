@@ -6,7 +6,9 @@ import FusionCharts from 'fusioncharts';
 import Column2D from 'fusioncharts/fusioncharts.charts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import {router} from './router'
+import axios from 'axios'
 
+Vue.prototype.$http = axios
 // Install BootstrapVue
 Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme);
 Vue.use(BootstrapVue)
