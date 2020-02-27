@@ -36,13 +36,7 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {
-      "comma-dangle": 0,
-      "no-unused-vars": "warn",
-      "no-console": 1,
-      "no-unexpected-multiline": "warn"
-    },
-    "parser": "babel-eslint",
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
     }
