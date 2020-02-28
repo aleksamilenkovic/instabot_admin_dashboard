@@ -4,24 +4,46 @@
             <div class="element">
                 <img src="../assets/logo.png" style="margin-top:10%; ">
             </div>
-
         </div>
-        <profile-stats></profile-stats>
+        <hr class="featurette-divider" style="margin-left: 15%;margin-right: 15%">
+        <div class="container features">
+            <b-row>
+                <b-col lg="4">
+                    <img class="rounded-circle feature" src="../assets/instagram-follower.png" alt="Following" width="140" height="140">
+                    <h4>Following</h4>
+
+                </b-col>
+                <b-col lg="4">
+                    <img class="rounded-circle feature" src="../assets/instagram-heart.png" alt="Liking photos" width="130" height="130">
+                    <h4>Liking photos</h4>
+
+                </b-col>
+                <b-col lg="4">
+                    <img class="rounded-circle feature" src="../assets/Instagram-Analytics.jpg" alt="Generic placeholder image" width="130" height="130">
+                    <h4>Scrapping stats</h4>
+
+                </b-col>
+            </b-row>
+        </div>
+        <hr class="featurette-divider" style="margin-left: 15%;margin-right: 15%">
 
     </div>
 </template>
 
 <script>
-    import ProfileStats from "@/components/ProfileStats";
     export default {
         name: "Home",
-        components: {ProfileStats},
 
     }
 </script>
 
 <style scoped>
-
+    .container{
+        width: 100%;
+        margin-top:8%;
+        margin-bottom: 8%;
+        font-family: 'Ink Free', Helvetica, Arial, sans-serif;
+    }
     #home{
 
     }
@@ -60,4 +82,12 @@
             background-color: #2a2a2e;
         }
     }
+    .feature{
+        margin:5px;
+        transition: transform 0.5s;
+    }
+    .feature:hover {
+        transform: rotate(360deg);
+     }
+
 </style>
