@@ -39,11 +39,17 @@ export default {
 }
   #main{
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%!important;
   }
 .footer {
    padding: 1%;
    color: white;
    background-color: #2a2a2e;
-   flex-shrink: 0;
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   left: 0;
 }
 </style>
