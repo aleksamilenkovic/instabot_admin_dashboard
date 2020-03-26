@@ -1,42 +1,32 @@
 <template>
     <div class="profile" >
-        <b-card  class="overflow-hidden " >
-            <b-row no-gutters class="card-body align-items-center d-flex justify-content-center">
+        <div class="container overflow-hidden card-body ">
+            <div class="row" >
+                <div class="col-md-4">
+                    <b-img :src=profile.imgUrl style="border-radius:50%;width: 150px;" ></b-img>
+                </div>
+                <div class="col-md-4" >
+                        <a :href="`https://www.instagram.com/`+profile.username">
+                            <b-button  pill size="lg" id="username">{{profile.username}}</b-button>
+                        </a>
+                    <b-row style="margin-top:5%">
+                        <b-col  lg="6">
+                            <span >Followers: {{profile.followers}}</span>
+                        </b-col>
+                        <b-col  lg="6">
+                            <span >Following: {{profile.following}}</span>
+                        </b-col>
+                    </b-row>
+                        <span>Posts: {{profile.posts}}</span>
+                </div>
+                <div class="col-md-4" >
+                        <b-button pill size="md" id="analyze" @click="analyze()">analyze</b-button>
+                        <br >
+                        <b-button pill size="md" id="follow" style="margin-top:15%">following</b-button>
+                </div>
+            </div>
+        </div>
 
-                    <b-col >
-                        <b-card-img :src=profile.imgUrl style="border-radius:50%; " left></b-card-img>
-                    </b-col>
-                    <b-card-body >
-
-                        <b-row >
-                            <b-col >
-                                <b-row>
-                                    <a :href="`https://www.instagram.com/`+profile.username">
-                                        <b-button  pill size="lg" id="username">{{profile.username}}</b-button>
-                                    </a>
-                                </b-row>
-                                <b-row>
-                                    <span >Followers: {{profile.followers}}</span>
-                                    <span>Following: {{profile.following}}</span>
-                                </b-row>
-
-                                <b-row>
-                                    <span>Posts: {{profile.posts}}</span>
-                                </b-row>
-                            </b-col>
-                            <b-col >
-                                <b-row>
-                                    <b-button  pill size="md" id="analyze" >analyze</b-button>
-                                </b-row>
-                                <b-row>
-                                <b-button  pill size="md" id="follow">following</b-button>
-                            </b-row>
-                            </b-col>
-                        </b-row>
-
-                    </b-card-body>
-            </b-row>
-        </b-card>
     </div>
 </template>
 
@@ -57,12 +47,19 @@
                 imgUrl: String
             }
 
+        },
+        methods:{
+            analyze(){
+                this.$router.push({name:'analyze', params:{ username: this.profile.username }})
+            }
         }
 
     }
 </script>
 
 <style scoped>
+    .followers_following{
+    }
     .profile{
         margin:1%;
         font-family: 'Ink Free', Helvetica, Arial, sans-serif;

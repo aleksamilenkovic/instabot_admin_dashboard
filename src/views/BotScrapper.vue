@@ -36,34 +36,12 @@
                         imgUrl: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA'
                     }*/
                 ],
-                profileStats: [
-                    {
-                        followers: 221,
-                        following: 25,
-                        posts: 45,
-                        averageLikes: 89.2,
-                        time: '2020-01-05',
-                        postsStats: [
-                            {
-                                time: '2020-01-05',
-                                likes: 50,
-                                url: 'instagram.com/lezalekss',
-                                imgUrl: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA',
-                            },
-                            {
-                                time: '2020-01-05',
-                                likes: 32,
-                                url: 'instagram.com/kostasavic',
-                                imgUrl: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA'
-                            }
-                        ]
-                    }
-                ]
+
             }
         },
         methods:{
             getProfiles(){
-                this.$http.get('http://localhost:8085/api/get-profiles')
+                this.$http.get('http://192.168.182.123:8086/api/get-profiles')
                     .then((response) => {
                         // eslint-disable-next-line no-console
                         console.log(response.data)

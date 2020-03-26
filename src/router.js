@@ -20,9 +20,9 @@ export const router = new VueRouter({
             component: BotScrapper
         },
         {
-            path: '/Analyze:username',
-            name: 'Analyze',
-            comp: Analyze
+            path: '/Analyze/:username',
+            name: 'analyze',
+            component: Analyze
         }
     ]
 });

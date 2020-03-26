@@ -1,8 +1,9 @@
 <template>
     <div id="home">
+
         <div class="background">
             <div class="element">
-                <img src="../assets/logo.png" style="margin-top:10%; ">
+                <img src="../assets/logo.png" style="margin-top:5%; ">
             </div>
         </div>
         <hr class="featurette-divider" style="margin-left: 15%;margin-right: 15%">
@@ -33,7 +34,14 @@
 <script>
     export default {
         name: "Home",
+        data(){
+            return{
 
+            }
+        },
+        mounted() {
+
+        }
     }
 </script>
 
@@ -53,8 +61,8 @@
         height: 500px;
     }
     .element {
-        height: 250px;
-        width: 250px;
+        height: 220px;
+        width: 220px;
         margin: auto;
         border-radius: 10%;
         background-color: #2a2a2e;
