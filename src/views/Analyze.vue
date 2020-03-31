@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <fusioncharts style="margin-right: 6%;margin-left: 3%;"
+        <fusioncharts style="font-size: 16px;"
                 :type="type"
                 :width="width"
                 :height="height"
@@ -133,10 +133,10 @@
         methods:{
             convertPostsForChart(){
                 var chartData = []
-                this.profileStats.postsStats.forEach(post=>{
-                    var chartElement = {label:post.time.replace("T","\n"), value:post.likes}
+                for (let i = 0; i < 12; i++) {
+                    var chartElement = {label:this.profileStats.postsStats[i].time.replace("T","\n"), value:this.profileStats.postsStats[i].likes}
                     chartData.push(chartElement)
-                })
+                }
                 this.dataSource.data = chartData;
                 console.log(this.dataSource)
             }
