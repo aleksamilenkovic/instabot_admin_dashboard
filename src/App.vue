@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <navbar/>
+    <navbar v-if="showMenu"/>
     <div id="main">
       <router-view></router-view>
     </div>
-    <footer class="footer" >
+    <footer class="footer" v-if="showMenu">
       <div class="container text-center" style="margin-top:1%">
         <small >Copyright &copy; lezalekss instabot d.o.o.</small>
       </div>
@@ -17,6 +17,11 @@ import Navbar from "@/components/Navbar";
 
 export default {
   name: 'app',
+  computed:{
+    showMenu() {
+      return this.$route.name !== 'Login';
+    }
+  },
   components: {
     Navbar,
   }

@@ -6,15 +6,18 @@ import FusionCharts from 'fusioncharts';
 import Column2D from 'fusioncharts/fusioncharts.charts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import {router} from './router'
+import store from './store';
 import axios from 'axios'
+import VeeValidate from "vee-validate";
 
 Vue.prototype.$http = axios
-// Install BootstrapVue
+Vue.use(VeeValidate)
 Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme);
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

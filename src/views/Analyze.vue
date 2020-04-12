@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="fade-in">
         <div class="frame" align="center">
             <div class="blur"></div>
             <div class="center">
@@ -68,6 +68,7 @@
 </template>
 
 <script>
+    import ContentService from '../services/content-service'
     export default {
         name: "Analyze",
         data(){
@@ -120,7 +121,8 @@
         created() {
             // eslint-disable-next-line no-console
             this.username = this.$route.params.username
-            this.$http.get('http://192.168.182.123:8086/api/get-profile-stats/'+this.username)
+
+                ContentService.getProfileStats(this.username)
                 .then(stats=>{
                     this.profileStats = stats.data;
                     // eslint-disable-next-line no-undef
@@ -406,4 +408,19 @@
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
     }
+
+
+
+    .fade-in {
+        animation: fadeIn ease 2s;
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity:0;
+        }
+        100% {
+            opacity:1;
+        }
+    }
+
 </style>
