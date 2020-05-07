@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div class="profiles" v-for="profile in profiles" :key="profile.username" >
-            <profile :profile="profile" />
+    <div class="botscrapper">
+        <div class="profiles" v-for="(profile,index) in profiles" :key="profile.username" >
+            <profile :profile="profile" v-bind:class="classObject(index)"/>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@
         data(){
             return{
                 profiles: [
-                    {
+                    /*{
                         username: 'lezalekss',
                         followers: 221,
                         following: 251,
@@ -35,38 +35,66 @@
                         following: 121,
                         posts: 70,
                         imgUrl: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA'
-                    }
+                    }*/
                 ],
 
             }
         },
         methods:{
             getProfiles(){
-                /*this.$http.get('http://instabot-admin-service.herokuapp.com/api/get-profiles')
-                    .then((response) => {
-                        // eslint-disable-next-line no-console
-                        console.log(response.data)
-                        this.profiles = response.data
-                    })
-                    .catch(error=>{
-                        // eslint-disable-next-line no-console
-                        console.log(error)
-                    })*/
                 ContentService.getAllProfiles().then(response =>{
                     this.profiles = response.data
-                }).catch(error =>{console.log(error)})
+                }).catch(error =>{
+                    console.log(error);
+                    this.$store.dispatch('auth/logout');
+                    this.$router.push('/login');
+                })
+            },
+            classObject: function (index) {
+                return index%2===0 ? 'slidein-to-left':'slidein-to-right';
             }
         },
         mounted(){
             this.getProfiles()
         },
-
     }
 </script>
 
 <style scoped>
+    .botscrapper{
+        min-height: 1000px;
+    }
     .profiles{
         width: 50%;
         margin: 5% auto auto;
+    }
+    .slidein-to-left {
+        animation: slidein-to-left ease 1s;
+    }
+    .slidein-to-right {
+        animation: slidein-to-right ease 1s;
+    }
+    @keyframes slidein-to-left {
+        from {
+            margin-left: 200%;
+            width: 100%;
+        }
+
+        to {
+            margin-left: 0%;
+            width: 100%;
+        }
+    }
+
+    @keyframes slidein-to-right {
+        from {
+            margin-left: -200%;
+            width: 100%;
+        }
+
+        to {
+            margin-left: 0%;
+            width: 100%;
+        }
     }
 </style>

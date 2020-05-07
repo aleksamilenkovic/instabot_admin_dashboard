@@ -15,6 +15,9 @@
             </b-navbar-nav>
 
         </b-collapse>
+        <b-navbar-nav class="ml-auto">
+            <b-nav-item v-on:click="logout()">Logout</b-nav-item>
+        </b-navbar-nav>
     </b-navbar>
 </template>
 
@@ -29,6 +32,10 @@
         methods: {
             toggleNavbar() {
                 this.show = !this.show
+            },
+            logout(){
+                this.$store.dispatch('auth/logout');
+                this.$router.push('/login');
             }
         }
     }
