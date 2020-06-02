@@ -1,17 +1,23 @@
 <template>
     <div class="botscrapper">
+<!--        <div class="background"></div>-->
+        <div class="new-profile">
+            <button class="new-profile-button" v-b-modal.new-profile-modal>Scrap new profile</button>
+        </div>
         <div class="profiles" v-for="(profile,index) in profiles" :key="profile.username" >
             <profile :profile="profile" v-bind:class="classObject(index)"/>
         </div>
+        <NewProfileModal></NewProfileModal>
     </div>
 </template>
 
 <script>
     import ContentService from '../services/content-service'
     import Profile from "@/components/Profile";
+    import NewProfileModal from "@/components/NewProfileModal";
     export default {
         name: "BotScrapper",
-        components: {Profile},
+        components: {NewProfileModal, Profile},
         data(){
             return{
                 profiles: [
@@ -61,6 +67,63 @@
 </script>
 
 <style scoped>
+    .new-profile-button{
+        position: relative;
+        padding: 1em 1.5em;
+        border: none;
+        background-color:transparent;
+        cursor: pointer;
+        outline: none;
+        font-size: 18px;
+        margin: 1em 0.8em;
+        color: #566473;
+    }
+    .new-profile-button::after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        border: 2px solid;
+        transition: all 0.6s ease;
+        border-radius: 2px;
+        bottom: 0;
+        right: 0;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-bottom-color: #566473;
+        border-right-color: #566473;
+    }
+    .new-profile-button::before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        border: 2px solid;
+        transition: all 0.6s ease;
+        border-radius: 2px;
+        top: 0;
+        left: 0;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-top-color: #566473;
+        border-left-color: #566473;
+    }
+    .new-profile-button:hover:after,.new-profile-button:hover:before{
+        width: 100%;
+        height: 100%;
+    }
+    .new-profile{
+        margin:50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .background{
+        background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+        height: 500px;
+    }
     .botscrapper{
         min-height: 1000px;
     }
@@ -97,4 +160,5 @@
             width: 100%;
         }
     }
+
 </style>

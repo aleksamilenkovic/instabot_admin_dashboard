@@ -1,5 +1,5 @@
 <template>
-    <div class="fade-in">
+    <div class="fade-in-card">
         <div class="frame" align="center">
             <div class="blur"></div>
             <div class="center">
@@ -411,10 +411,10 @@
 
 
 
-    .fade-in {
-        animation: fadeIn ease 2s;
+    .fade-in-card {
+        animation: fadeInCard ease 2s;
     }
-    @keyframes fadeIn {
+    @keyframes fadeInCard {
         0% {
             opacity:0;
         }
