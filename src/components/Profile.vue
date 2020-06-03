@@ -31,11 +31,12 @@
 </template>
 
 <script>
+    import ContentService from '../services/content-service'
     export default {
         name: 'Profile',
         data(){
             return{
-
+                profileStats:{},
             }
         },
         props:{
@@ -50,7 +51,10 @@
         },
         methods:{
             analyze(){
-                this.$router.push({name:'analyze', params:{ username: this.profile.username }})
+                ContentService.getProfileStats(this.profile.username)
+                    .then(stats=>{
+                        this.$router.push({name:'analyze', params:{ profileStats: stats.data, username: this.profile.username}})
+                    }).catch(error=>{ console.log(error) })
             }
         }
 

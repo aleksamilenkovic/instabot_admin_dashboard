@@ -10,7 +10,7 @@
                         <img :src=profileStats.profile.imgUrl width="80" height="80" alt="User">
                     </div>
 
-                    <div class="name">{{username}}</div>
+                    <div class="name">{{profileStats.profile.username}}</div>
                     <div class="job" >{{profileStats.time.split("T")[0]}}</div>
                     <div class="job" >{{profileStats.time.split("T")[1]}}</div>
 
@@ -68,12 +68,11 @@
 </template>
 
 <script>
-    import ContentService from '../services/content-service'
     export default {
         name: "Analyze",
         data(){
             return{
-                username: String,
+                profile: {},
                 profileStats:
                 {
                     followers: 221,
@@ -120,17 +119,14 @@
         },
         created() {
             // eslint-disable-next-line no-console
-            this.username = this.$route.params.username
-
-                ContentService.getProfileStats(this.username)
-                .then(stats=>{
-                    this.profileStats = stats.data;
-                    // eslint-disable-next-line no-undef
-                    this.groupedPostsBy3 = _.chunk(stats.data.postsStats, 3)
-                    console.log(stats.data)
-                    this.convertPostsForChart()
-                    console.log(this.dataSource)
-                }).catch(error=>{ console.log(error) })
+            this.profileStats = this.$route.params.profileStats
+            if(!this.profileStats)
+                this.$router.push('/BotScrapper')
+            // eslint-disable-next-line no-undef
+            this.groupedPostsBy3 = _.chunk(this.profileStats.postsStats, 3)
+            console.log(this.profileStats)
+            this.convertPostsForChart()
+            console.log(this.dataSource)
         },
         methods:{
             convertPostsForChart(){
