@@ -1,5 +1,6 @@
 <template>
     <div class="profile" >
+        <Loading :active.sync="visible" :can-cancel="true"></Loading>
         <div class="container overflow-hidden card-body ">
             <div class="row" >
                 <div class="col-md-4">
@@ -31,12 +32,14 @@
 </template>
 
 <script>
+    import Loading from 'vue-loading-overlay';
     import ContentService from '../services/content-service'
     export default {
         name: 'Profile',
         data(){
             return{
-                profileStats:{},
+                profileStats : {},
+                visible : false
             }
         },
         props:{
@@ -49,13 +52,20 @@
             }
 
         },
+        components:{
+            Loading: Loading
+        },
         methods:{
             analyze(){
+                this.visible = true
+                // setTimeout(() => {  loader.hide(); }, 5000);
+
                 ContentService.getProfileStats(this.profile.username)
                     .then(stats=>{
                         this.$router.push({name:'analyze', params:{ profileStats: stats.data, username: this.profile.username}})
                     }).catch(error=>{ console.log(error) })
-            }
+                this.visible = false
+            },
         }
 
     }

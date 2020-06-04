@@ -11,7 +11,9 @@ import {router} from './router'
 import store from './store';
 import axios from 'axios'
 import VeeValidate from "vee-validate";
-
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+// Init plugin
 Vue.prototype.$http = axios
 Vue.use(VeeValidate)
 Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme);
