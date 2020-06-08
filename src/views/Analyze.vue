@@ -14,7 +14,7 @@
                     <div class="job" >{{profileStats.time.split("T")[0]}}</div>
                     <div class="job" >{{profileStats.time.split("T")[1]}}</div>
 
-                    <div class="stats" style="margin-left: 20%;margin-top: 5%;">
+                    <div v-if="!profileStats.profile.private" class="stats" style="margin-left: 20%;margin-top: 5%;">
                         <div class="box" style="border-radius: 45px;">
                             <span class="value">{{Math.floor(profileStats.averageLikes * 100) / 100}}</span>
                             <span class="parameter">Average likes</span>
@@ -38,32 +38,46 @@
                 </div>
             </div>
         </div>
-        <fusioncharts style="font-size: 16px;"
-                :type="type"
-                :width="width"
-                :height="height"
-                :dataFormat="dataFormat"
-                :dataSource="dataSource"
-        ></fusioncharts>
-        <hr class="featurette-divider" style="margin-left: 15%;margin-right: 15%">
-        <p>
-            <h1>Recent posts</h1>
-        <p>
+        <div v-if="!profileStats.profile.private">
+            <fusioncharts style="font-size: 16px;"
+                    :type="type"
+                    :width="width"
+                    :height="height"
+                    :dataFormat="dataFormat"
+                    :dataSource="dataSource"
+            ></fusioncharts>
+            <hr class="featurette-divider" style="margin-left: 15%;margin-right: 15%">
+            <p>
+                <h1>Recent posts</h1>
+            <p>
 
-         <div v-for="groupOfPosts in this.groupedPostsBy3" class="row" :key="groupOfPosts[0].time" style="margin-left: 9%;margin-right: 9%">
-            <div v-for="post in groupOfPosts" class="col" :key="post.url">
-                <div class="panel hovereffect" >
-                    <b-img :src=post.imgUrl style="" class="img-responsive"/>
-                    <div class="overlay" >
+             <div v-for="groupOfPosts in this.groupedPostsBy3" class="row" :key="groupOfPosts[0].time" style="margin-left: 9%;margin-right: 9%">
+                <div v-for="post in groupOfPosts" class="col" :key="post.url">
+                    <div class="panel hovereffect" >
+                        <b-img :src=post.imgUrl style="" class="img-responsive"/>
                         <a :href="post.url">
-                        <p>❤ {{post.likes}}</p>
-                        <h2 style="margin-top:105px;margin-bottom: 95px;"></h2>
-                        <p>🕒 {{post.time}}</p>
+                            <div class="overlay">
+                                        <span>❤ {{post.likes}}</span>
+                                        <h2 style="margin-top:105px;margin-bottom: 95px;"></h2>
+                                        <span>🕒 {{post.time}}</span>
+                            </div>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+        <div v-else class="private-profile">
+            <h3 style="padding:20px;">Profile is private.</h3>
+            <i class="fa fa-lock fa-5x" style="color:gray;" aria-hidden="true"></i>
+
+            <fusioncharts style="font-size: 16px;"
+                          :type="type"
+                          :width="width"
+                          :height="height"
+                          :dataFormat="dataFormat"
+            ></fusioncharts>
+        </div>
+
     </div>
 </template>
 
@@ -95,7 +109,8 @@
                         }
                     ],
                     profile:{
-                        imgUrl:""
+                        imgUrl:"",
+                        private: false
                     }
                 },
                 groupedPostsBy3:[],
@@ -419,4 +434,10 @@
         }
     }
 
+    .private-profile{
+        background: linear-gradient(90deg, rgba(108,108,108,1) 0%, rgba(255,255,255,1) 50%, rgba(138,138,138,1) 100%);
+        width: 100%;
+        height: 20%;
+        font-family: 'Open Sans', Helvetica, sans-serif;
+    }
 </style>
