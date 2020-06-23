@@ -3,7 +3,7 @@
         <Loading :active.sync="visible" :can-cancel="true"></Loading>
         <div class="container overflow-hidden card-body ">
             <div class="row" >
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <b-img :src=profile.imgUrl style="border-radius:50%;width: 150px;" ></b-img>
                 </div>
                 <div class="col-md-4" >
@@ -25,9 +25,11 @@
                         <br >
                         <b-button pill size="md" id="follow" style="margin-top:15%">following</b-button>
                 </div>
+                <div class="col-md-1">
+                    <span class="fa fa-remove delete" @click="openDeleteModal"></span>
+                </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -66,6 +68,12 @@
                     }).catch(error=>{ console.log(error) })
                 this.visible = false
             },
+            deleteProfile(){
+
+            },
+            openDeleteModal(){
+                this.$emit('setProfileToDelete')
+            }
         }
 
     }
@@ -85,5 +93,13 @@
     #username:hover{
         background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
 
+    }
+    .delete{
+        font-size:24px;color: #6c757d;
+        border: none;
+        outline:none;
+    }
+    .delete:hover{
+        transform: scale(1.3);
     }
 </style>

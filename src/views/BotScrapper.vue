@@ -5,9 +5,10 @@
             <button class="new-profile-button" v-b-modal.new-profile-modal>Scrap new profile</button>
         </div>
         <div class="profiles" v-for="(profile,index) in profiles" :key="profile.username" >
-            <profile :profile="profile" v-bind:class="classObject(index)"/>
+            <Profile :profile="profile" v-bind:class="classObject(index)"  v-on:setProfileToDelete="deleteProfileModal(profile.username)"/>
         </div>
         <NewProfileModal></NewProfileModal>
+        <DeleteProfileModal :username="this.selectedUsername"></DeleteProfileModal>
     </div>
 </template>
 
@@ -15,9 +16,10 @@
     import ContentService from '../services/content-service'
     import Profile from "@/components/Profile";
     import NewProfileModal from "@/components/NewProfileModal";
+    import DeleteProfileModal from "@/components/DeleteProfileModal";
     export default {
         name: "BotScrapper",
-        components: {NewProfileModal, Profile},
+        components: {DeleteProfileModal, NewProfileModal, Profile},
         data(){
             return{
                 profiles: [
@@ -43,7 +45,7 @@
                         imgUrl: 'https://instagram.fbeg5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/50787945_282561842424900_2223532194368847872_n.jpg?_nc_ht=instagram.fbeg5-1.fna.fbcdn.net&_nc_ohc=_SMPKvfz6CUAX_G2nLX&oh=b9fc7435a3bda23ca34ab31b9db078a0&oe=5EBDAEEA'
                     }*/
                 ],
-
+                selectedUsername: ''
             }
         },
         methods:{
@@ -58,7 +60,11 @@
             },
             classObject: function (index) {
                 return index%2===0 ? 'slidein-to-left':'slidein-to-right';
-            }
+            },
+            deleteProfileModal(username){
+                this.selectedUsername = username
+                this.$bvModal.show("delete-modal")
+            },
         },
         mounted(){
             this.getProfiles()

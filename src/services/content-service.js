@@ -13,6 +13,9 @@ class ContentService {
     getNewProfile(username, toLike, toFollow){
         return axios.post(API.BASEURL + API.GETNEWPROFILE, {username: username, toLike: toLike, toFollow: toFollow},{headers: authHeader()})
     }
+    deleteProfile(username){
+        return axios.get(API.BASEURL + API.GETNEWPROFILE + username, {headers: authHeader()})
+    }
 }
 
 export default new ContentService();

@@ -11,8 +11,8 @@
                     </div>
 
                     <div class="name">{{profileStats.profile.username}}</div>
-                    <div class="job" >{{profileStats.time.split("T")[0]}}</div>
-                    <div class="job" >{{profileStats.time.split("T")[1]}}</div>
+                    <div class="job" v-if="!profileStats.profile.private">{{profileStats.time.split("T")[0]}}</div>
+                    <div class="job" v-if="!profileStats.profile.private" >{{profileStats.time.split("T")[1]}}</div>
 
                     <div v-if="!profileStats.profile.private" class="stats" style="margin-left: 20%;margin-top: 5%;">
                         <div class="box" style="border-radius: 45px;">
@@ -24,21 +24,21 @@
 
                 <div class="stats" >
                     <div class="box">
-                        <span class="value">{{profileStats.posts}}</span>
+                        <span class="value">{{profileStats.profile.posts}}</span>
                         <span class="parameter">Posts</span>
                     </div>
                     <div class="box">
-                        <span class="value">{{profileStats.followers}}</span>
+                        <span class="value">{{profileStats.profile.followers}}</span>
                         <span class="parameter">Followers</span>
                     </div>
                     <div class="box">
-                        <span class="value">{{profileStats.following}}</span>
+                        <span class="value">{{profileStats.profile.following}}</span>
                         <span class="parameter">Following</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div v-if="!profileStats.profile.private">
+        <div v-if="!this.profileStats.profile.private">
             <fusioncharts style="font-size: 16px;"
                     :type="type"
                     :width="width"
@@ -137,11 +137,12 @@
             this.profileStats = this.$route.params.profileStats
             if(!this.profileStats)
                 this.$router.push('/BotScrapper')
-            // eslint-disable-next-line no-undef
-            this.groupedPostsBy3 = _.chunk(this.profileStats.postsStats, 3)
             console.log(this.profileStats)
-            this.convertPostsForChart()
-            console.log(this.dataSource)
+            if(!this.profileStats.profile.private){
+                // eslint-disable-next-line no-undef
+                this.groupedPostsBy3 = _.chunk(this.profileStats.postsStats, 3)
+                this.convertPostsForChart()
+            }
         },
         methods:{
             convertPostsForChart(){

@@ -5,5 +5,6 @@ export const API ={
     REGISTER : 'auth/register',
     GETPROFILES: 'bot/get-profiles',
     GETPROFILESTATS: 'bot/get-profile-stats/',
-    GETNEWPROFILE: 'bot/scrap-new-profile/'
+    GETNEWPROFILE: 'bot/scrap-new-profile/',
+    DELETEPROFILE: 'bot/delete-profile/'
 }
