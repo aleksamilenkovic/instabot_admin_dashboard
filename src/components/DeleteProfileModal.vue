@@ -26,7 +26,7 @@
             },
             deleteProfile(){
                 ContentService.deleteProfile(this.username).then(()=>{
-                    this.router.go()
+                    this.$router.go()
                 })
             }
         }
