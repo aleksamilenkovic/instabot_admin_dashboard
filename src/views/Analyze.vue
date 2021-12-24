@@ -7,7 +7,7 @@
                     <div class="image">
                         <div class="circle-1"></div>
                         <div class="circle-2"></div>
-                        <img :src=profileStats.profile.imgUrl width="80" height="80" alt="User">
+                        <b-img :src=dataUrl(profileStats.profile.image) width="80" height="80" alt="User"></b-img>
                     </div>
 
                     <div class="name">{{profileStats.profile.username}}</div>
@@ -54,7 +54,7 @@
              <div v-for="groupOfPosts in this.groupedPostsBy3" class="row" :key="groupOfPosts[0].time" style="margin-left: 9%;margin-right: 9%">
                 <div v-for="post in groupOfPosts" class="col" :key="post.url">
                     <div class="panel hovereffect" >
-                        <b-img :src=post.imgUrl style="" class="img-responsive"/>
+                        <b-img :src=dataUrl(post.image) style="" class="img-responsive"></b-img>
                         <a :href="post.url">
                             <div class="overlay">
                                         <span>❤ {{post.likes}}</span>
@@ -153,6 +153,10 @@
                 }
                 this.dataSource.data = chartData;
                 console.log(this.dataSource)
+            },
+            dataUrl(img) {
+              return 'data:image/jpeg;base64,' +
+                  img;
             }
 
         }
