@@ -4,7 +4,7 @@
         <div class="container overflow-hidden card-body ">
             <div class="row" >
                 <div class="col-md-3">
-                    <b-img :src=profile.imgUrl style="border-radius:50%;width: 150px;" ></b-img>
+                    <b-img :src=this.dataUrl(profile.image) style="border-radius:50%;width: 150px;" ></b-img>
                 </div>
                 <div class="col-md-4" >
                         <a :href="`https://www.instagram.com/`+profile.username">
@@ -50,7 +50,8 @@
                 followers: Number,
                 following: Number,
                 posts: Number,
-                imgUrl: String
+                imgUrl: String,
+                image : Object
             }
 
         },
@@ -73,6 +74,10 @@
             },
             openDeleteModal(){
                 this.$emit('setProfileToDelete')
+            },
+            dataUrl(img) {
+              return 'data:image/jpeg;base64,' +
+                  img;
             }
         }
 
